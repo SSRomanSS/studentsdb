@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<title>Сервіс Обліку Студентів</title>
+	<meta name="description" value="Система Обліку Студентів Навчального Закладу" >
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Include Styles -->			
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+			
+	<link rel="stylesheet"
+			href="./css/main.css">
+</head>
+
+<body>
+	<!-- Start Container -->
+  <div class="container">
+
+    <!-- Start Header -->
+    <div class="row" id="header"> 
+      <div class="col-8">
+        <h1>Сервіс Обліку Студентів</h1>
+      </div>
+      <div class="col-4" id="group-selector">
+        <strong>Група:</strong>
+        <select>
+          <option value="">Усі Студенти</option>
+          <option value="">Мтм-21, Олег Ячменев </option>
+          <option value="">Мтм-22, Віталій Подоба</option>
+          <option value="">Мтм-23, Андрій Іванов</option> 
+        </select>
+      </div>
+    </div>
+    <!-- End Header -->
+
+    <!-- Start subheader -->
+    <div class="row" id="sub-header"> 
+      <div class="col-12">
+        <ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link" href="#">Студенти</a>
+			</li>
+			 <li class="nav-item">
+				<a class="nav-link" href="#">Відвідування</a>
+			 </li>
+			 <li class="nav-item">
+				<a class="nav-link active" href="#">Групи</a>
+			 </li>
+		</ul>
+      </div>
+    </div>
+    <!-- End subheader -->
+
+    <!-- Start Content Columns -->
+    <div class="row" id="content-columns">
+      <div class="col-12" id="content-column">
+
+        <div class="alert alert-success" role="alert">
+			Група успішно додана.
+		</div>
+
+        <h2>Групи</h2>
+        <a class="btn btn-primary" href="#" >Додати Групу</a>
+        
+        <!-- Start Students Listing -->
+        <table class="table table-bordered" id="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col"><a href="#">#</a></th>
+              <th scope="col"><a href="#">Назва &uarr;</a></th>
+              <th scope="col"><a href="#">Староста</a></th>
+              <th scope="col">Дії</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td><a href="#">МтМ-21</td>
+              <td><a href="#">Ячменев Олег</td>
+              <td>
+                <div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" 
+					type="button" 
+					id="dropdownMenuButton" 
+					data-toggle="dropdown" 
+					aria-haspopup="true" 
+					aria-expanded="false">
+						Дія
+					</button>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#">Редагування</a>
+							<a class="dropdown-item" href="#">Відвідування</a>
+							<a class="dropdown-item" href="#">Видалити</a>
+						  </div>
+				</div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td><a href="#">МтМ-22</td>
+              <td><a href="#">Віталій Подоба</td>
+              <td>
+                <div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" 
+					type="button" 
+					id="dropdownMenuButton" 
+					data-toggle="dropdown" 
+					aria-haspopup="true" 
+					aria-expanded="false">
+						Дія
+					</button>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#">Редагування</a>
+							<a class="dropdown-item" href="#">Відвідування</a>
+							<a class="dropdown-item" href="#">Видалити</a>
+						  </div>
+				</div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td><a href="#">МтМ-23</td>
+              <td><a href="#">Іванов Андрій</td>
+              <td>
+                <div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" 
+					type="button" 
+					id="dropdownMenuButton" 
+					data-toggle="dropdown" 
+					aria-haspopup="true" 
+					aria-expanded="false">
+						Дія
+					</button>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#">Редагування</a>
+							<a class="dropdown-item" href="#">Відвідування</a>
+							<a class="dropdown-item" href="#">Видалити</a>
+						  </div>
+				</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- End Students Listing -->
+        
+        <nav aria-label="Page navigation example">
+		  <ul class="pagination">
+			<li class="page-item">
+			  <a class="page-link" href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+			  </a>
+			</li>
+			<li class="page-item"><a class="page-link" href="#">1</a></li>
+			<li class="page-item"><a class="page-link" href="#">2</a></li>
+			<li class="page-item"><a class="page-link" href="#">3</a></li>
+			<li class="page-item">
+			  <a class="page-link" href="#" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			  </a>
+			</li>
+		  </ul>
+		</nav>
+        
+      </div>
+    </div>
+    <!-- End Content Columns -->
+    
+    <!-- Start Footer -->
+    <div class="row" id="footer">
+      <div class="col-12">
+        &copy; 2014 Сервіс Обліку Студентів
+      </div>
+    </div>
+    <!-- End Footer -->
+
+  </div>
+  <!-- End Container -->
+  
+  <!-- Javascripts Inclusion -->
+  
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
