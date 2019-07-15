@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, re_path
 from students import views 
 
+
 urlpatterns = [
 	re_path(r'^$', views.students_list, name='home'),
 	re_path(r'^students/add/$', views.students_add, name='students_add'),
@@ -29,6 +30,6 @@ urlpatterns = [
 	re_path(r'^groups/(?P<gid>\d+)/delete/$', views.groups_delete, name='groups_delete'),
 	
 	re_path(r'^journal/$', views.students_visiting, name='students_visiting'),
-	
+
     path('admin/', admin.site.urls),
 ]

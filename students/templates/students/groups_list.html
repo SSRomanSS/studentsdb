@@ -8,7 +8,7 @@
 	<!-- Include Styles -->			
 	<link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 			
 	<link rel="stylesheet"
           href="./css/main.css">
@@ -27,8 +27,9 @@
         <strong>Група:</strong>
         <select>
           <option value="">Усі Студенти</option>
-          <option value="">Мтм-21, Віталій Подоба</option>
-          <option value="">Мтм-22, Андрій Петров</option>
+          <option value="">Мтм-21, Олег Ячменев </option>
+          <option value="">Мтм-22, Віталій Подоба</option>
+          <option value="">Мтм-23, Андрій Іванов</option> 
         </select>
       </div>
     </div>
@@ -39,13 +40,13 @@
       <div class="col-12">
         <ul class="nav nav-tabs">
 			<li class="nav-item">
-				<a class="nav-link active" href="/">Студенти</a>
+				<a class="nav-link" href="/">Студенти</a>
 			</li>
 			 <li class="nav-item">
-				<a class="nav-link" href="/journal">Відвідування</a>
+				<a class="nav-link" href="#">Відвідування</a>
 			 </li>
 			 <li class="nav-item">
-				<a class="nav-link" href="/groups">Групи</a>
+				<a class="nav-link active" href="#">Групи</a>
 			 </li>
 		</ul>
       </div>
@@ -57,31 +58,27 @@
       <div class="col-12" id="content-column">
 
         <div class="alert alert-success" role="alert">
-			Студент успішно доданий.
+			Група успішно додана.
 		</div>
 
-        <h2>База Студентів</h2>
-        <a class="btn btn-primary" href="/students/add" >Додати Студента</a>
+        <h2>Групи</h2>
+        <a class="btn btn-primary" href="#" >Додати Групу</a>
         
         <!-- Start Students Listing -->
         <table class="table table-bordered" id="table">
           <thead class="thead-light">
             <tr>
               <th scope="col"><a href="#">#</a></th>
-              <th scope="col">Фото</th>
-              <th scope="col"><a href="#">Прізвище &uarr;</a></th>
-              <th scope="col"><a href="#">Ім'я</a></th>
-              <th scope="col"><a href="#">№ Білету</a></th>
+              <th scope="col"><a href="#">Назва &uarr;</a></th>
+              <th scope="col"><a href="#">Староста</a></th>
               <th scope="col">Дії</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td><img class="rounded-circle" src="./img/podoba3.jpg" height="30" width="30" /></td>
-              <td><a href="/students/1/edit">Корост</td>
-              <td><a href="/students/1/edit">Андрій</td>
-              <td>2123</td>
+              <td><a href="#">МтМ-21</td>
+              <td><a href="#">Ячменев Олег</td>
               <td>
                 <div class="dropdown">
 					<button class="btn btn-secondary dropdown-toggle" 
@@ -93,19 +90,17 @@
 						Дія
 					</button>
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="/students/1/edit">Редагування</a>
-							<a class="dropdown-item" href="/journal/1">Відвідування</a>
-							<a class="dropdown-item" href="/students/1/delete">Видалити</a>
+							<a class="dropdown-item" href="#">Редагування</a>
+							<a class="dropdown-item" href="#">Відвідування</a>
+							<a class="dropdown-item" href="#">Видалити</a>
 						  </div>
 				</div>
               </td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td><img class="rounded-circle" src="./img/me.jpeg" height="30" width="30" /></td>
-              <td><a href="students/2/edit">Подоба</td>
-              <td><a href="students/2/edit">Віталій</td>
-              <td>254</td>
+              <td><a href="#">МтМ-22</td>
+              <td><a href="#">Віталій Подоба</td>
               <td>
                 <div class="dropdown">
 					<button class="btn btn-secondary dropdown-toggle" 
@@ -117,19 +112,17 @@
 						Дія
 					</button>
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="students/2/edit">Редагування</a>
-							<a class="dropdown-item" href="/journal/2">Відвідування</a>
-							<a class="dropdown-item" href="/students/2/delete">Видалити</a>
+							<a class="dropdown-item" href="#">Редагування</a>
+							<a class="dropdown-item" href="#">Відвідування</a>
+							<a class="dropdown-item" href="#">Видалити</a>
 						  </div>
 				</div>
               </td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td><img class="rounded-circle" src="./img/piv.png" height="30" width="30" /></td>
-              <td><a href="students/3/edit">Притула</td>
-              <td><a href="students/3/edit">Тарас</td>
-              <td>5332</td>
+              <td><a href="#">МтМ-23</td>
+              <td><a href="#">Іванов Андрій</td>
               <td>
                 <div class="dropdown">
 					<button class="btn btn-secondary dropdown-toggle" 
@@ -141,9 +134,9 @@
 						Дія
 					</button>
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="students/3/edit">Редагування</a>
-							<a class="dropdown-item" href="/journal/3">Відвідування</a>
-							<a class="dropdown-item" href="/students/3/delete">Видалити</a>
+							<a class="dropdown-item" href="#">Редагування</a>
+							<a class="dropdown-item" href="#">Відвідування</a>
+							<a class="dropdown-item" href="#">Видалити</a>
 						  </div>
 				</div>
               </td>
