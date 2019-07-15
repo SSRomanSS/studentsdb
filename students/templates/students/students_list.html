@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -11,7 +13,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 			
 	<link rel="stylesheet"
-          href="./css/main.css">
+          href="{% static "css/main.css" %}">
 </head>
 
 <body>
@@ -78,7 +80,7 @@
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td><img class="rounded-circle" src="./img/podoba3.jpg" height="30" width="30" /></td>
+              <td><img class="rounded-circle" src={% static 'img/podoba3.jpg' %} height="30" width="30" /></td>
               <td><a href="/students/1/edit">Корост</td>
               <td><a href="/students/1/edit">Андрій</td>
               <td>2123</td>
@@ -102,7 +104,7 @@
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td><img class="rounded-circle" src="./img/me.jpeg" height="30" width="30" /></td>
+              <td><img class="rounded-circle" src="{% static "img/me.jpeg" %}" height="30" width="30" /></td>
               <td><a href="students/2/edit">Подоба</td>
               <td><a href="students/2/edit">Віталій</td>
               <td>254</td>
@@ -126,7 +128,7 @@
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td><img class="rounded-circle" src="./img/piv.png" height="30" width="30" /></td>
+              <td><img class="rounded-circle" src="{% static "img/piv.png" %}" height="30" width="30" /></td>
               <td><a href="students/3/edit">Притула</td>
               <td><a href="students/3/edit">Тарас</td>
               <td>5332</td>
