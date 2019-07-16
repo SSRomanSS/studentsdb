@@ -43,13 +43,13 @@
       <div class="col-12">
         <ul class="nav nav-tabs">
 			<li class="nav-item">
-				<a class="nav-link active" href="/">Студенти</a>
+				<a class="nav-link active" href="{% url "home" %}">Студенти</a>
 			</li>
 			 <li class="nav-item">
-				<a class="nav-link" href="/journal">Відвідування</a>
+				<a class="nav-link" href="{% url "students_visiting" %}">Відвідування</a>
 			 </li>
 			 <li class="nav-item">
-				<a class="nav-link" href="/groups">Групи</a>
+				<a class="nav-link" href="{% url "groups" %}">Групи</a>
 			 </li>
 		</ul>
       </div>
@@ -65,9 +65,10 @@
 		</div>
 
         <h2>База Студентів</h2>
-        <a class="btn btn-primary" href="/students/add" >Додати Студента</a>
+        <a class="btn btn-primary" href="{% url "students_add" %}">Додати Студента</a>
         
         <!-- Start Students Listing -->
+        {% if students %}
         <table class="table table-bordered" id="table">
           <thead class="thead-light">
             <tr>
@@ -99,7 +100,7 @@
 					</button>
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item" href="{% url "students_edit" student.id %}">Редагування</a>
-							<a class="dropdown-item" href="/journal/{{ student.id }}">Відвідування</a>
+							<a class="dropdown-item" href="{% url "student_visiting" student.id %}">Відвідування</a>
 							<a class="dropdown-item" href="{% url "students_delete" student.id %}">Видалити</a>
 						  </div>
 				</div>
@@ -109,6 +110,9 @@
           </tbody>
         </table>
         <!-- End Students Listing -->
+        {% else %}
+        <p>Поки що немає студентів у базі</p>
+        {% endif %}
         
         <nav aria-label="Page navigation example">
 		  <ul class="pagination">

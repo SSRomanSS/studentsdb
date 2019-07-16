@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
+#from django.conf import settings
+#from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+#from django.conf.urls.static import static
 from students import views
 
 urlpatterns = [
@@ -29,6 +32,12 @@ urlpatterns = [
 	re_path(r'^groups/(?P<gid>\d+)/delete/$', views.groups_delete, name='groups_delete'),
 
 	re_path(r'^journal/$', views.students_visiting, name='students_visiting'),
+	re_path(r'^journal/(?P<sid>\d+)/visiting$', views.student_visiting, name='student_visiting'),
 
 	path('admin/', admin.site.urls),
 ]
+
+#urlpatterns += staticfiles_urlpatterns()
+#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+#urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

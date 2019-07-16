@@ -63,3 +63,7 @@ def groups_delete(request, gid):
 
 def students_visiting(request):
     return HttpResponse('<h1>Student Visiting</h1>')
+
+
+def student_visiting(request, sid):
+    return HttpResponse('<h1>Student {} Visiting</h1>'.format(sid))

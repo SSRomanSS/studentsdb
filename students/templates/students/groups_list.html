@@ -42,13 +42,13 @@
       <div class="col-12">
         <ul class="nav nav-tabs">
 			<li class="nav-item">
-				<a class="nav-link" href="/">Студенти</a>
+				<a class="nav-link" href="{% url "home" %}">Студенти</a>
 			</li>
 			 <li class="nav-item">
-				<a class="nav-link" href="#">Відвідування</a>
+				<a class="nav-link" href="{% url "students_visiting" %}">Відвідування</a>
 			 </li>
 			 <li class="nav-item">
-				<a class="nav-link active" href="#">Групи</a>
+				<a class="nav-link active" href="{% url "groups" %}">Групи</a>
 			 </li>
 		</ul>
       </div>
@@ -64,7 +64,7 @@
 		</div>
 
         <h2>Групи</h2>
-        <a class="btn btn-primary" href="#" >Додати Групу</a>
+        <a class="btn btn-primary" href="{% url "groups_add" %}" >Додати Групу</a>
         
         <!-- Start Students Listing -->
         <table class="table table-bordered" id="table">
