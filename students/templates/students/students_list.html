@@ -27,7 +27,14 @@
             {% for student in students %}
             <tr>
               <th scope="row">{{ forloop.counter }}</th>
-              <td><img class="rounded-circle" src={% static student.image %} height="30" width="30" /></td>
+              <td><img class="rounded-circle"
+                       {% if student.photo %}
+                       src={{ student.photo.url }}
+                       {% else %}
+                       src={% static 'img/default_user.png' %}
+                        {% endif %}
+                  height="30" width="30" />
+              </td>
               <td><a href="{% url "students_edit" student.id %}">{{ student.last_name }}</td>
               <td><a href="{% url "students_edit" student.id %}">{{ student.first_name }}</td>
               <td>{{ student.ticket }}</td>

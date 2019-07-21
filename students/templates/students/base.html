@@ -45,15 +45,15 @@
       <div class="col-12">
         <ul class="nav nav-tabs">
 			<li class="nav-item">
-				<a class="nav-link {% if request.resolver_match.url_name == "home" %} active {% endif %}"
+				<a class="nav-link {% if request.resolver_match.url_name == "home" %}active{% endif %}"
                 href="{% url "home" %}">Студенти</a>
 			</li>
 			 <li class="nav-item">
-				<a class="nav-link  {% if request.resolver_match.url_name == "student_visiting" %} active {% endif %}"
+				<a class="nav-link  {% if request.resolver_match.url_name == "student_visiting" %}active{% endif %}"
                  href="{% url "students_visiting" %}">Відвідування</a>
 			 </li>
 			 <li class="nav-item">
-				<a class="nav-link {% if request.resolver_match.url_name == "groups" %} active {% endif %}"
+				<a class="nav-link {% if request.resolver_match.url_name == "groups" %}active{% endif %}"
                  href="{% url "groups" %}">Групи</a>
 			 </li>
 		</ul>
