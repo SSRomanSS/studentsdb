@@ -13,16 +13,39 @@
         <!-- Start Students Listing -->
         {% if students %}
         <table class="table table-bordered" id="table">
+          {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
           <thead class="thead-light">
             <tr>
               <th scope="col"><a href="#">#</a></th>
               <th scope="col">Фото</th>
-              <th scope="col"><a href="#">Прізвище &uarr;</a></th>
-              <th scope="col"><a href="#">Ім'я</a></th>
-              <th scope="col"><a href="#">№ Білету</a></th>
+              <th scope="col">
+                  <a href="{% url "home" %}?order_by=last_name{% if order_by == 'last_name' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                  Прізвище
+                  {% if order_by == 'last_name' and reverse != '1' %}&uarr;
+                  {% elif order_by == 'last_name' and reverse == '1' %}&darr;
+                  {% endif %}
+                  </a>
+              </th>
+              <th scope="col">
+                  <a href="{% url "home" %}?order_by=first_name{% if order_by == 'first_name' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                  Ім'я
+                  {% if order_by == 'first_name' and reverse != '1' %}&uarr;
+                  {% elif order_by == 'first_name' and reverse == '1' %}&darr;
+                  {% endif %}
+                  </a>
+              </th>
+              <th scope="col">
+                  <a href="{% url "home" %}?order_by=ticket{% if order_by == 'ticket' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                  № Білету
+                  {% if order_by == 'ticket' and reverse != '1' %}&uarr;
+                  {% elif order_by == 'ticket' and reverse == '1' %}&darr;
+                  {% endif %}
+                  </a>
+              </th>
               <th scope="col">Дії</th>
             </tr>
           </thead>
+          {% endwith %}
           <tbody>
             {% for student in students %}
             <tr>
@@ -31,7 +54,7 @@
                        {% if student.photo %}
                        src={{ student.photo.url }}
                        {% else %}
-                       src={% static 'img/default_user.png' %}
+                       src={% static "img/default_user.png" %}
                         {% endif %}
                   height="30" width="30" />
               </td>
