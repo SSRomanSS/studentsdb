@@ -7,7 +7,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Groups Selector */
-#header{
+#header {
   margin-top: 30px;
 }
 #group-selector {
@@ -23,8 +23,15 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 30px;
   color: #555555;
 }
-#table{
+#table {
   margin-top: 10px;
+  text-align: center;
+}
+#table th {
+  vertical-align: middle;
+}
+#table td {
+  vertical-align: middle;
 }
 
 /* Footer Styles */

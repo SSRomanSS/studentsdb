@@ -1,23 +1,26 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="uk">
+<html lang='uk'>
 <head>
 	<meta charset="UTF-8">
 	<title>Сервіс Обліку Студентів - {% block meta_title %}{% endblock meta_title %}</title>
-	<meta name="description" value="Система Обліку Студентів Навчального Закладу" >
+	<meta name="description" content="Система Обліку Студентів Навчального Закладу" >
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Include Styles -->			
 	<link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 			
 	<link rel="stylesheet"
-          href="{{ PORTAL_URL }}{% static "css/main.css" %}">
+          href="{{ PORTAL_URL }}{% static 'css/main.css' %}">
 
     {% block extra_css %}{% endblock extra_css %}
 
-    <link rel="shortcut icon" type="image/png" href="{{ PORTAL_URL }}{% static "favicon.ico" %}">
+    <link rel="shortcut icon"
+          type="image/png"
+          href="{{ PORTAL_URL }}{% static 'favicon.ico' %}">
 </head>
 
 <body>
@@ -45,16 +48,16 @@
       <div class="col-12">
         <ul class="nav nav-tabs">
 			<li class="nav-item">
-				<a class="nav-link {% if request.resolver_match.url_name == "home" %}active{% endif %}"
-                href="{% url "home" %}">Студенти</a>
+				<a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                href="{% url 'home' %}">Студенти</a>
 			</li>
 			 <li class="nav-item">
-				<a class="nav-link  {% if request.resolver_match.url_name == "student_visiting" %}active{% endif %}"
-                 href="{% url "students_visiting" %}">Відвідування</a>
+				<a class="nav-link  {% if request.resolver_match.url_name == 'student_visiting' %}active{% endif %}"
+                 href="{% url 'students_visiting' %}">Відвідування</a>
 			 </li>
 			 <li class="nav-item">
-				<a class="nav-link {% if request.resolver_match.url_name == "groups" %}active{% endif %}"
-                 href="{% url "groups" %}">Групи</a>
+				<a class="nav-link {% if request.resolver_match.url_name == 'groups' %}active{% endif %}"
+                 href="{% url 'groups' %}">Групи</a>
 			 </li>
 		</ul>
       </div>
@@ -65,7 +68,7 @@
     <div class="row" id="content-columns">
       <div class="col-12" id="content-column">
 
-        {% comment "Not used alert so far" %}
+        {% comment 'Not used alert so far' %}
         <div class="alert alert-success" role="alert">
 			Status Update!
 		</div>

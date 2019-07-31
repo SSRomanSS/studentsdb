@@ -8,7 +8,7 @@
 
 {% block content %}
 
-        <a class="btn btn-primary" href="{% url "groups_add" %}" >Додати Групу</a>
+        <a class="btn btn-primary" href="{% url 'groups_add' %}" >Додати Групу</a>
         
         <!-- Start Students Listing -->
 		{% if groups %}
@@ -25,8 +25,10 @@
             {% for group in groups %}
             <tr>
               <th scope="row">{{ forloop.counter }}</th>
-              <td><a href="{% url "groups_edit" group.id %}">{{ group.name }}</td>
-              <td><a href="{% url "students_edit" group.id %}">{{ group.leader }}</td>
+                <td><a href="{% url 'groups_edit' group.id %}">{{ group.name }}</a>
+                </td>
+              <td><a href="{% url 'students_edit' group.id %}">{{ group.leader }}</a>
+              </td>
               <td>
                 <div class="dropdown">
 					<button class="btn btn-secondary dropdown-toggle"
@@ -38,8 +40,8 @@
 						Дія
 					</button>
 						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="{% url "groups_edit" group.id %}">Редагування</a>
-							<a class="dropdown-item" href="{% url "groups_delete" group.id %}">Видалити</a>
+							<a class="dropdown-item" href="{% url 'groups_edit' group.id %}">Редагування</a>
+							<a class="dropdown-item" href="{% url 'groups_delete' group.id %}">Видалити</a>
 						  </div>
 				</div>
               </td>
@@ -51,7 +53,8 @@
 		{% else %}
         <p>Поки що немає груп у базі</p>
         {% endif %}
-        
+
+        <!-- Start Pagination -->
         <nav aria-label="Page navigation example">
 		  <ul class="pagination">
 			<li class="page-item">
@@ -71,25 +74,9 @@
 		</nav>
 {% endblock content %}
         
-      </div>
-    </div>
-    <!-- End Content Columns -->
+    <!-- End Pagination -->
     
-    <!-- Start Footer -->
-    <div class="row" id="footer">
-      <div class="col-12">
-        &copy; 2014 Сервіс Обліку Студентів
-      </div>
-    </div>
-    <!-- End Footer -->
 
-  </div>
-  <!-- End Container -->
+
+
   
-  <!-- Javascripts Inclusion -->
-  
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-</html>
