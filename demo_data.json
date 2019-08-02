@@ -167,7 +167,7 @@
     "model": "students.group",
     "pk": 1,
     "fields": {
-        "title": "MTM-4",
+        "title": "\u041c\u0422\u041c-4",
         "leader": 1,
         "notes": ""
     }
@@ -709,6 +709,19 @@
         "content_type": 8,
         "object_id": "1",
         "object_repr": "MTM-4 (Oleg Podoba)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"title\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2019-08-02T09:10:04.433Z",
+        "user": 1,
+        "content_type": 8,
+        "object_id": "1",
+        "object_repr": "\u041c\u0422\u041c-4 (Oleg Podoba)",
         "action_flag": 2,
         "change_message": "[{\"changed\": {\"fields\": [\"title\"]}}]"
     }
