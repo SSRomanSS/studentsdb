@@ -9,7 +9,7 @@ from ..models import Student
 
 # Views for Students
 def students_list(request):
-	students = Student.objects.all().order_by('last_name')
+	students = Student.objects.all()
 	
 	# try to order students list
 	order_by = request.GET.get('order_by', '')

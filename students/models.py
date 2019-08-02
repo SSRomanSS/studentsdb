@@ -10,6 +10,7 @@ class Student(models.Model):
 	class Meta(object):
 		verbose_name = 'Студент'
 		verbose_name_plural = 'Студенти'
+		ordering = ['last_name']
 	
 	first_name = models.CharField(
 		max_length=256,
@@ -63,6 +64,7 @@ class Group(models.Model):
 	class Meta(object):
 		verbose_name = 'Група'
 		verbose_name_plural = 'Групи'
+		ordering = ['title']
 	
 	title = models.CharField(
 		max_length=256,
