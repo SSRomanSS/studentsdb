@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from ..models import Student
+from ..models.students import Student
 
 
 # Views for Students
@@ -29,7 +29,6 @@ def students_list(request):
 	except EmptyPage:
 		# If page is out of range (e.g. 9999), deliver last page of results.
 		students = paginator.page(paginator.num_pages)
-	
 	return render(request, 'students/students_list.html', {'students': students})
 
 
