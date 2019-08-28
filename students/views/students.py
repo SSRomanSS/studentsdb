@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from datetime import datetime
+from PIL import Image
 
 from ..models.students import Student
 from ..models.groups import Group
@@ -82,7 +83,15 @@ def students_add(request):
 
 			photo = request.FILES.get('photo')
 			if photo:
-				data['photo'] = photo
+				try:
+					Image.open(photo).verify()
+				except Exception:
+					errors['photo'] = "Файл не є зображенням"
+				else:
+					if photo.size > (2 * 1024 * 1024):
+						errors['photo'] = "Завеликий файл. Фото має бути не більше 2 мегабайт"
+					else:
+						data['photo'] = photo
 
 			# save student
 			if not errors:
