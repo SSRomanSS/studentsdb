@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
+from datetime import datetime
+from PIL import Image
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from datetime import datetime
-from PIL import Image
+
 
 from ..models.students import Student
 from ..models.groups import Group
@@ -98,7 +99,7 @@ def students_add(request):
 				student = Student(**data)
 				student.save()
 				# redirect to students list
-				return HttpResponseRedirect(reverse('home'))
+				return HttpResponseRedirect('{}?status_message=Студента {} успішно додано'.format(reverse('home'), student))
 			else:
 				# render form with errors and previos ser inpt
 				return render(request, 'students/students_add.html',
@@ -106,7 +107,7 @@ def students_add(request):
 					'errors': errors})
 		elif request.POST.get('cancel_button') is not None:
 			# redirect to home page on cancel button
-			return HttpResponseRedirect(reverse('home'))
+			return HttpResponseRedirect('{}?status_message=Додавання студента скасовано!'.format(reverse('home')))
 	else:
 		# initial form render
 		return render(

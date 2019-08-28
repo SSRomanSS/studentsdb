@@ -67,18 +67,19 @@
     <!-- Start Content Columns -->
     <div class="row" id="content-columns">
       <div class="col-12" id="content-column">
-
-        {% comment 'Not used alert so far' %}
+        {% if request.GET.status_message %}
+        {% if 'успішно' in request.GET.status_message %}
         <div class="alert alert-success" role="alert">
-			Status Update!
+         {% else %}
+          <div class="alert alert-info" role="alert">
+          {% endif %}
+           {{ request.GET.status_message }}
 		</div>
-        {% endcomment %}
-
+        {% endif %}
         <h2>{% block title %}{% endblock title %}</h2>
         {% block content %}{% endblock content %}
-
       </div>
-    </div>
+      </div>
     <!-- End Content Columns -->
     
     <!-- Start Footer -->
