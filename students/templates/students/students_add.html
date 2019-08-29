@@ -27,10 +27,6 @@
 		<div class="invalid-feedback">
 			{{ errors.first_name }}
 		</div>
-		{% else %}
-		<div class="valid-feedback">
-			Виглядає добре
-		</div>
 		{% endif %}
 	</div>
 </div>
@@ -43,10 +39,6 @@
 		{% if errors.last_name %}
 		<div class="invalid-feedback">
 			{{ errors.last_name }}
-		</div>
-		{% else %}
-		<div class="valid-feedback">
-			Виглядає добре
 		</div>
 		{% endif %}
 	</div>
@@ -68,10 +60,6 @@
 		<div class="invalid-feedback">
 			{{ errors.birthday }}
 		</div>
-		{% else %}
-		<div class="valid-feedback">
-			Виглядає добре
-		</div>
 		{% endif %}
 	</div>
 </div>
@@ -79,8 +67,22 @@
 <div class="form-group row">
 	<label for="photo" class="col-sm-2 col-form-label">Фото</label>
 	<div class="col-sm-10">
-		<input type="file" value="" name="photo" id="photo" class="form-control" required/>
-		<div class="invalid-feedback">{{ errors.photo }}</div>
+		<div class="custom-file">
+			<input type="file" value="" name="photo" id="photo"
+				   class="custom-file-input form-control {% if errors.photo %}is-invalid{% endif %}" required/>
+			<label class="custom-file-label" for="photo">
+			{% if request.FILES.get %}
+				request.FILES.get
+			{% else %}
+				Choose file
+			{% endif %}
+			</label>
+			{% if errors.photo %}
+			<div class="invalid-feedback">
+				{{ errors.photo }}
+			</div>
+			{% endif %}
+		</div>
 	</div>
 </div>
 
@@ -88,14 +90,10 @@
 	<label for="ticket" class="col-sm-2 col-form-label">Білет*</label>
 	<div class="col-sm-10">
 		<input type="text" value="{{ request.POST.ticket }}" name="ticket" id="ticket" placeholder="Введіть число"
-			   class="form-control {% if errors.ticket %}is-invalid{% elif request.POST.ticket %}is-valid{% endif %}" required/>
-		{% if errors.ticcket %}
+			   class="form-control-file form-control {% if errors.ticket %}is-invalid{% elif request.POST.ticket %}is-valid{% endif %}" required/>
+		{% if errors.ticket %}
 		<div class="invalid-feedback">
 			{{ errors.ticket }}
-		</div>
-		{% else %}
-		<div class="valid-feedback">
-			Виглядає добре
 		</div>
 		{% endif %}
 	</div>
@@ -105,7 +103,7 @@
 	<label for="student_group" class="col-sm-2 col-form-label">Група*</label>
 	<div class="col-sm-10">
 		<select name="student_group" id="student_group"
-				class="form-control {% if errors.student_group %}is-invalid{% elif request.POST.student_group %}is-valid{% endif %}" required>
+				class="custom-select form-control {% if errors.student_group %}is-invalid{% elif request.POST.student_group %}is-valid{% endif %}"  size="1" required>
 			<option value="">Виберіть групу</option>
 			{% for group in groups %}
 			<option value="{{ group.id }}"
@@ -118,10 +116,6 @@
 		{% if errors.student_group %}
 		<div class="invalid-feedback">
 			{{ errors.student_group }}
-		</div>
-		{% else %}
-		<div class="valid-feedback">
-			Виглядає добре
 		</div>
 		{% endif %}
 	</div>

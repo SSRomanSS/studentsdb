@@ -47,6 +47,15 @@ select,
 input {
   max-width: 300px;
 }
+
 label {
   text-align: right;
+}
+
+.custom-file-label {
+  text-align: left;
+}
+
+.custom-file {
+  max-width: 300px;
 }
