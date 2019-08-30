@@ -20,7 +20,7 @@ from django.urls import path, re_path
 # from django.conf.urls.static import static
 from django.views.static import serve
 from .settings import MEDIA_ROOT, DEBUG
-from students.views import students, groups, journal
+from students.views import students, groups, journal, contact_admin
 
 urlpatterns = [
 	re_path(r'^$', students.students_list, name='home'),
@@ -35,6 +35,9 @@ urlpatterns = [
 
 	re_path(r'^journal/$', journal.students_visiting, name='students_visiting'),
 	re_path(r'^journal/(?P<sid>\d+)/visiting$', journal.student_visiting, name='student_visiting'),
+	
+	# Contact Admin Form
+	re_path(r'^contact-admin/$', contact_admin.contact_admin, name='contact_admin'),
 
 	path('admin/', admin.site.urls),
 ]

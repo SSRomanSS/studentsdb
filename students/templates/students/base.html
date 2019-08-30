@@ -58,7 +58,11 @@
 			 <li class="nav-item">
 				<a class="nav-link {% if request.resolver_match.url_name == 'groups' %}active{% endif %}"
                  href="{% url 'groups' %}">Групи</a>
-			 </li>
+             </li>
+			 </li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'contact_admin' %}active{% endif %}"
+                 href="{% url 'contact_admin' %}">Контакт</a>
+            </li>
 		</ul>
       </div>
     </div>
