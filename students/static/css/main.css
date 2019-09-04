@@ -36,9 +36,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Footer Styles */
 #footer {
-  border-top: 1px solid #dddddd;
+  border-top: 2px solid #dddddd;
   padding-top: 10px;
   margin-left: 20px;
+  margin-right: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
 }
 
 /* Form Styles */
@@ -59,3 +65,4 @@ label {
 .custom-file {
   max-width: 300px;
 }
+
