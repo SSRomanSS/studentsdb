@@ -25,7 +25,7 @@ from students.views import students, groups, journal, contact_admin
 urlpatterns = [
 	re_path(r'^$', students.students_list, name='home'),
 	re_path(r'^students/add/$', students.students_add, name='students_add'),
-	re_path(r'^students/(?P<sid>\d+)/edit/$', students.students_edit, name='students_edit'),
+	re_path(r'^students/(?P<pk>\d+)/edit/$', students.StudentUpdateView.as_view(), name='students_edit'),
 	re_path(r'^students/(?P<sid>\d+)/delete/$', students.students_delete, name='students_delete'),
 
 	re_path(r'^groups/$', groups.groups_list, name='groups'),

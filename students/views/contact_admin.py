@@ -30,9 +30,10 @@ class ContactForm(forms.Form):
 		self.helper.form_method = 'POST'
 		self.helper.form_class = 'form-horizontal'
 		self.helper.form_action = reverse('contact_admin')
+		self.helper.render_unmentioned_fields = True
 		# twitter bootstrap styles
-		#self.helper.help_text_inline = True
-		#self.helper.html5_required = True
+		self.helper.help_text_inline = True
+		self.helper.html5_required = True
 		self.helper.label_class = 'col-sm-2'
 		self.helper.field_class = 'col-sm-10'
 		

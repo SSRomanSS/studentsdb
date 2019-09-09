@@ -6,6 +6,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.forms import ModelForm
+from django.views.generic import UpdateView
+
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit, HTML
+from crispy_forms.bootstrap import FormActions
 
 
 from ..models.students import Student
@@ -117,8 +123,52 @@ def students_add(request):
 		)
 
 
-def students_edit(request, sid):
-	return HttpResponse('<h1>Edit Student {}</h1>'.format(sid))
+class StudentUpdateForm(ModelForm):
+	class Meta:
+		model = Student
+		fields = '__all__'
+		
+	def __init__(self, *args, **kwargs):
+		super(StudentUpdateForm, self).__init__(*args, **kwargs)
+		self.helper = FormHelper(self)
+		# set form tag attributes
+		self.helper.form_action = reverse('students_edit', args=[self.instance.id])
+		self.helper.form_method = 'POST'
+		self.helper.form_class = 'form-horizontal'
+		self.helper.render_unmentioned_fields = True
+		# set form field properties
+		self.helper.help_text_inline = True
+		self.helper.html5_required = True
+		self.helper.label_class = 'col-sm-2 control-label'
+		self.helper.field_class = 'col-sm-10'
+		# add buttons
+		self.helper.layout.append(FormActions(
+			Submit('add_button', 'Зберегти'),
+			HTML('<button type="submit" name="cancel_button" class="btn btn-link" value="Скасувати">Скасувати</button>')
+			)
+		)
+		# self.helper.add_input(Submit('add_button', 'Зберегти'))
+		# self.helper.add_input(Submit('cancel_button', 'Скасувати', css_class='btn btn-link'))
+		
+		
+class StudentUpdateView(UpdateView):
+	model = Student
+	template_name = 'students/students_edit.html'
+	form_class = StudentUpdateForm
+	#fields = '__all__'
+	
+	def get_success_url(self):
+		return '{}?status_message=Студента успішно збережено!'.format(reverse('home'))
+
+	def post(self, request, *args, **kwargs):
+		if request.POST.get('cancel_button'):
+			return HttpResponseRedirect('{}?status_message=Редагування студента скасовано!'.format(reverse('home')))
+		else:
+			return super(StudentUpdateView, self).post(request, *args, **kwargs)
+
+
+# def students_edit(request, sid):
+# return HttpResponse('<h1>Edit Student {}</h1>'.format(sid))
 
 
 def students_delete(request, sid):
