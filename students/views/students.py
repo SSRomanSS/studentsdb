@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.forms import ModelForm
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DeleteView
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, HTML
@@ -155,7 +155,7 @@ class StudentUpdateView(UpdateView):
 	model = Student
 	template_name = 'students/students_edit.html'
 	form_class = StudentUpdateForm
-	#fields = '__all__'
+	# fields = '__all__'
 	
 	def get_success_url(self):
 		return '{}?status_message=Студента успішно збережено!'.format(reverse('home'))
@@ -166,10 +166,16 @@ class StudentUpdateView(UpdateView):
 		else:
 			return super(StudentUpdateView, self).post(request, *args, **kwargs)
 
-
 # def students_edit(request, sid):
 # return HttpResponse('<h1>Edit Student {}</h1>'.format(sid))
 
 
-def students_delete(request, sid):
-	return HttpResponse('<h1>Delete Student {}</h1>'.format(sid))
+class StudentDeleteView(DeleteView):
+	model = Student
+	template_name = 'students/students_confirm_delete.html'
+	
+	def get_success_url(self):
+		return '{}?status_message=Студента успішно видалено!'.format(reverse('home'))
+
+# def students_delete(request, sid):
+# return HttpResponse('<h1>Delete Student {}</h1>'.format(sid))

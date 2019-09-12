@@ -31,6 +31,7 @@ class ContactForm(forms.Form):
 		self.helper.form_class = 'form-horizontal'
 		self.helper.form_action = reverse('contact_admin')
 		self.helper.render_unmentioned_fields = True
+		# self.disable_csrf = False
 		# twitter bootstrap styles
 		self.helper.help_text_inline = True
 		self.helper.html5_required = True
