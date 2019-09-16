@@ -143,4 +143,3 @@ EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-

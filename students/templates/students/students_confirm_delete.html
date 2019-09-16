@@ -2,8 +2,6 @@
 
 {% load static %}
 
-{% load crispy_forms_tags %}
-
 {% block meta_title %}Видалити Студента{% endblock meta_title %}
 
 {% block title %}Видалити Студента{% endblock title %}
@@ -13,8 +11,9 @@
 
 <form action="{% url 'students_delete' object.id %}" method="post">
 	{% csrf_token %}
-    <p>Ви впевнені, що хочете видалити суднта "{{ object }}"?</p>
+    <p>Ви впевнені, що хочете видалити студента "{{ object }}"?</p>
+	<br/>
 	<input type="submit" value="Так" class="btn btn btn-danger">
 </form>
-<br>
+<br/>
 {% endblock content %}

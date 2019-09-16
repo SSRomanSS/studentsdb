@@ -3,8 +3,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
 
 from ..models.groups import Group
+from ..models.students import Student
 
 
 # Views for Groups
@@ -32,6 +34,25 @@ def groups_list(request):
     return render(request, 'students/groups_list.html', {'groups': groups})
 
 
+class StudentsOfGroup(ListView):
+    # model = Student
+    template_name = 'students/students_in_group.html'
+    context_object_name = 'students'  # instead of object_list
+    ordering = ['last_name']
+    paginate_by = 3
+    
+    def get_context_data(self, **kwargs):
+        context = super(StudentsOfGroup, self).get_context_data(**kwargs)
+        context['slug'] = self.kwargs['slug']  # additional variable in context to use it in template
+        pk = int(context['slug'])
+        context['group'] = Group.objects.get(pk=pk).title  # additional variable in context to use it in template
+        return context
+
+    def get_queryset(self):  # instead of 'model=Student'
+        students = Student.objects.filter(student_group=self.kwargs['slug'])
+        return students
+    
+        
 def groups_add(request):
     return HttpResponse('<h1>Group Add Form</h1>')
 

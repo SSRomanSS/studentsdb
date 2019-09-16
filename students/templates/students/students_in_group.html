@@ -1,0 +1,88 @@
+{% extends "students/base.html" %}
+
+{% load static %}
+
+{% block meta_title %}Групи{% endblock meta_title %}
+
+{% block title %}Список студентів групи <a href="{% url 'groups_edit' slug %}"> {{ group }} </a>{% endblock title %}
+
+{% block content %}
+
+<a class="btn btn-primary" href="{% url 'students_add' %}">Додати Студента</a>
+
+        <!-- Start Students Listing -->
+        {% if object_list %}
+        <table  class="table table-bordered" id="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col"><a href="#">#</a></th>
+              <th scope="col">Фото</th>
+              <th scope="col">Прізвище</th>
+              <th scope="col">Ім'я</th>
+              <th scope="col">Група (Староста)</th>
+              <th scope="col">Дії</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for student in students %}
+            <tr>
+              <th scope="row">{{ forloop.counter0|add:page_obj.start_index }}</th>
+              {% if student.photo %}
+              <td><img class="rounded-circle" src="{{ student.photo.url }}" height='35' width='35'/></td>
+              {% else %}
+              <td><img class="rounded-circle" src="{% static 'img/default_user.png' %}" height='35' width='35'/></td>
+              {% endif %}
+              <td>{{ student.last_name }}</td>
+              <td>{{ student.first_name }}</td>
+              <td>{{ student.student_group }}</td>
+              <td>
+                <div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle"
+					type="button"
+					id="dropdownMenuButton"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false">
+						Дія
+					</button>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="{% url 'students_edit' student.id %}">Редагування</a>
+							<a class="dropdown-item" href="{% url 'student_visiting' student.id %}">Відвідування</a>
+							<a class="dropdown-item" href="{% url 'students_delete' student.id %}">Видалити</a>
+						  </div>
+				</div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!-- End Students Listing -->
+        {% else %}
+        <p>Поки що немає студентів у групі</p>
+        {% endif %}
+
+<!-- Start Pagination -->
+        {% if page_obj.has_other_pages %}
+        <nav aria-label="Page navigation example">
+		  <ul class="pagination">
+			<li class="page-item">
+			  <a class="page-link" href="{% url 'groups_students' slug %}?page=1" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+              </a>
+			</li>
+            {% for p in page_obj.paginator.page_range %}
+			<li class="page-item {% if page_obj.number == p %}active{% endif %}">
+                <a class="page-link" href="{% url 'groups_students' slug %}?page={{ p }}">{{ p }}
+                </a>
+            </li>
+            {% endfor %}
+			<li class="page-item">
+			  <a class="page-link" href="{% url 'groups_students' slug %}?page={{ page_obj.paginator.num_pages}}" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+              </a>
+			</li>
+		  </ul>
+		</nav>
+        {% endif %}
+        <!-- End Pagination -->
+{% endblock content %}

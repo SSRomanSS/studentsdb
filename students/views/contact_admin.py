@@ -74,5 +74,3 @@ def contact_admin(request):
 	else:
 		form = ContactForm()
 	return render(request, 'contact_admin/form.html', {'form': form})
-	
-

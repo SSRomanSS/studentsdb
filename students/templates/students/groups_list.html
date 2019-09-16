@@ -41,7 +41,7 @@
             {% for group in groups %}
             <tr>
               <th scope="row">{{ forloop.counter0|add:groups.start_index }}</th>
-                <td><a href="{% url 'groups_edit' group.id %}">{{ group.title }}</a>
+                <td><a href="{% url 'groups_students' group.id %}">{{ group.title }}</a>
                 </td>
               <td><a href="{% url 'groups_edit' group.id %}">{{ group.leader }}</a>
               </td>
@@ -97,10 +97,3 @@
         {% endif %}
         <!-- End Pagination -->
 {% endblock content %}
-        
-
-    
-
-
-
-  
