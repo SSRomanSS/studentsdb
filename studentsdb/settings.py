@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'studentsdb.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+# TODO replace databases settings out of repository
 
 DATABASES = {
     'default': {
