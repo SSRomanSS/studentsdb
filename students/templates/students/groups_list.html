@@ -1,0 +1,99 @@
+{% extends "students/base.html" %}
+
+{% load static %}
+
+{% block meta_title %}Групи{% endblock meta_title %}
+
+{% block title %}База Груп{% endblock title %}
+
+{% block content %}
+
+        <a class="btn btn-primary" href="{% url 'groups_add' %}" >Додати Групу</a>
+        
+        <!-- Start Students Listing -->
+		{% if groups %}
+        <table class="table table-bordered" id="table">
+          {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
+          <thead class="thead-light">
+            <tr>
+              <th scope="col"><a href="#">#</a></th>
+              <th scope="col">
+                  <a href="{% url 'groups' %}?order_by=title{% if order_by == 'title' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                  Назва
+                  {% if order_by == '' %}&uarr;
+                  {% elif order_by == 'title' and reverse != '1' %}&uarr;
+                  {% elif order_by == 'title' and reverse == '1' %}&darr;
+                  {% endif %}
+                  </a>
+              </th>
+              <th scope="col">
+                  <a href="{% url 'groups' %}?order_by=leader{% if order_by == 'leader' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                  Староста
+                   {% if order_by == 'leader' and reverse != '1' %}&uarr;
+                  {% elif order_by == 'leader' and reverse == '1' %}&darr;
+                  {% endif %}
+                  </a></th>
+              <th scope="col">Дії</th>
+            </tr>
+          </thead>
+          {% endwith %}
+          <tbody>
+            {% for group in groups %}
+            <tr>
+              <th scope="row">{{ forloop.counter0|add:groups.start_index }}</th>
+                <td><a href="{% url 'groups_students' group.id %}">{{ group.title }}</a>
+                </td>
+              <td><a href="{% url 'groups_edit' group.id %}">{{ group.leader }}</a>
+              </td>
+              <td>
+                <div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle"
+					type="button"
+					id="dropdownMenuButton"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false">
+						Дія
+					</button>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="{% url 'groups_edit' group.id %}">Редагування</a>
+							<a class="dropdown-item" href="{% url 'groups_delete' group.id %}">Видалити</a>
+						  </div>
+				</div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <!-- End Students Listing -->
+		{% else %}
+        <p>Поки що немає груп у базі</p>
+        {% endif %}
+
+        <!-- Start Pagination -->
+        {% if groups.has_other_pages %}
+        {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
+        <nav aria-label="Page navigation example">
+		  <ul class="pagination">
+			<li class="page-item">
+			  <a class="page-link" href="{% url 'groups' %}?page=1&amp;order_by={{ order_by }}&amp;reverse={{ reverse }}" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+              </a>
+			</li>
+            {% for p in groups.paginator.page_range %}
+			<li class="page-item {% if groups.number == p %}active{% endif %}">
+                <a class="page-link" href="{% url 'groups' %}?page={{ p }}&amp;order_by={{ order_by }}&amp;reverse={{ reverse }}">{{ p }}
+                </a>
+            </li>
+            {% endfor %}
+			<li class="page-item">
+			  <a class="page-link" href="{% url 'groups' %}?page={{ groups.paginator.num_pages}}&amp;order_by={{ order_by }}&amp;reverse={{ reverse }}" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+              </a>
+			</li>
+		  </ul>
+		</nav>
+        {% endwith %}
+        {% endif %}
+        <!-- End Pagination -->
+{% endblock content %}

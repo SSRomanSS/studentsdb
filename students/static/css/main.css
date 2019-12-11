@@ -1,0 +1,67 @@
+/* Global Styles */
+.alert {
+  margin: 10px 0 5px 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+/* Groups Selector */
+#header {
+  margin-top: 30px;
+}
+#group-selector {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+#group-selector select {
+  width: 80%;
+  margin: 0;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  height: 30px;
+  line-height: 30px;
+  color: #555555;
+}
+#table {
+  margin-top: 10px;
+  text-align: center;
+}
+#table th {
+  vertical-align: middle;
+}
+#table td {
+  vertical-align: middle;
+}
+
+/* Footer Styles */
+#footer {
+  border-top: 2px solid #dddddd;
+  padding-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+}
+
+/* Form Styles */
+textarea,
+select,
+input {
+  max-width: 300px;
+}
+
+label {
+  text-align: right;
+}
+
+.custom-file-label {
+  text-align: left;
+}
+
+.custom-file {
+  max-width: 300px;
+}
